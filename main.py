@@ -32,8 +32,8 @@ knn_predictions = knn_model.predict(X_test)
 
 # Print accuracy scores
 print("\n--- Model Results ---")
-print(f"Random Forest Accuracy: {accuracy_score(y_test, rf_predictions):.2f}")
-print(f"k-NN Accuracy:          {accuracy_score(y_test, knn_predictions):.2f}")
+print(f"Random Forest Accuracy: {accuracy_score(y_test, rf_predictions):.4f}")
+print(f"k-NN Accuracy:          {accuracy_score(y_test, knn_predictions):.4f}")
 
 # Print confusion matrices
 print("\nRandom Forest Confusion Matrix:")
@@ -41,3 +41,22 @@ print(confusion_matrix(y_test, rf_predictions))
 
 print("\nk-NN Confusion Matrix:")
 print(confusion_matrix(y_test, knn_predictions))
+
+# CONCLUSION
+# =============================================================
+# Both Random Forest and k-NN achieved around 96% accuracy on
+# the Breast Cancer dataset. However, Random Forest performed
+# slightly better (96.49% vs 95.61%).
+#
+# Looking at the confusion matrices, Random Forest missed only
+# 3 malignant tumors (False Negatives), while k-NN missed 5.
+# In medical diagnosis, missing a malignant tumor is far more
+# dangerous than a false alarm, so Random Forest is the safer
+# and better model for this specific dataset.
+#
+#The reason Random Forest performed well could be that it uses
+#hundreds of decision trees and takes a vote for the output,
+#thereby being less affected by noise in the data set.
+#k-NN is affected by the units of measurement used for the
+#different attributes and without applying feature scaling,
+#it performed slightly lower.
